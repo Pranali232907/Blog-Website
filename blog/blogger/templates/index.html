@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row gap-3">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="{% url 'createblog' %}" class="btn btn-primary btn-sm-4">create a blog</a>
+                </div>
+            </div>
+        </div>
+
+        {% for blog in blogs %}
+        
+        <div class="card" style="width: 18rem;">
+            <img src="{{blog.photo.url}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{blog.text}}</h5>
+              <p class="card-text">{{blog.text}}</p>
+              <a href="{% url 'updateblog' blog.id %}" class="btn btn-primary">Edit blog</a>
+              <a href="{% url 'deleteblog' blog.id %}" class="btn btn-primary">Delete blog</a>
+            </div>
+          </div>
+
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
